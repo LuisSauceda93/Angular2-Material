@@ -1,3 +1,185 @@
-<h1>
-  {{title}}
-</h1>
+
+<md-sidenav-container class="example-container" [class.dark-theme]="isDarkTheme">
+  <md-sidenav #sidenav class="example-sidenav">
+
+    <div>
+    <md-grid-list style="margin: 0px 16px 16px 16px;" cols="1" rowHeight="200px">
+      <md-grid-tile>
+        <img src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png"  height="100%" width="100%">
+        
+      </md-grid-tile>
+    </md-grid-list>
+    </div>
+    <div class="padding">     
+      <strong>Luis Alberto Sauceda Pérez</strong>
+    </div>
+
+     <md-grid-list  cols="1" rowHeight="50px">
+      <md-grid-tile>
+         <button  md-raised-button  class="alinear-izquierda" color="primary" (click)="barra2()"><md-icon class="icon-20">home</md-icon>Inicio</button>
+        
+      </md-grid-tile>
+      <md-grid-tile>
+        <button  md-raised-button  class="alinear-izquierda" color="primary" (click)="barra2()"><md-icon class="icon-20">poll</md-icon>Reportes</button>
+        
+      </md-grid-tile>
+       <md-grid-tile>
+        <button  md-raised-button  class="alinear-izquierda" color="primary" (click)="barra2()"><md-icon class="icon-20">account_circle</md-icon>Perfil</button>
+        
+      </md-grid-tile>
+       <md-grid-tile>
+        <button  md-raised-button  class="alinear-izquierda" color="primary" (click)="barra2()"><md-icon class="icon-20">settings</md-icon>Configuración</button>
+        
+      </md-grid-tile>
+      
+    </md-grid-list>
+    
+  </md-sidenav>
+<div [class.dark-theme]="isDarkTheme">
+  <md-toolbar color="primary">
+   
+    <span>
+     
+       <button class="color" md-menu-item (click)="barra()"><md-icon class="icon-20 boton-home color">menu</md-icon></button>
+      
+    </span>
+    
+   
+    
+    <button md-menu-item class="color"><md-icon class="example-icon boton-home color">group</md-icon>Nosotros</button>
+    <button md-menu-item class="color"><md-icon class="example-icon boton-home color">local_mall</md-icon>Productos</button>
+    <button md-menu-item class="color"><md-icon class="example-icon boton-home color">place</md-icon>Ubicanos</button>
+    <button md-menu-item class="color"><md-icon class="example-icon boton-home color">local_post_office</md-icon>Contactanos</button>
+    
+     <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  
+
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item (click)="openDialog()"><md-icon class="icon-20">settings</md-icon>Configiración</button>
+    <button md-menu-item (click)="isDarkTheme=!isDarkTheme" (click)="themaDark()" *ngIf="temaDark==false"><md-icon class="icon-20">brightness_2</md-icon>Tema noche</button>
+    <button md-menu-item (click)="isDarkTheme=!isDarkTheme" (click)="themaLight()" *ngIf="temaDark==true" ><md-icon class="icon-20">brightness_5</md-icon>Tema dia</button>
+    
+    <button md-menu-item><md-icon class="icon-20">help</md-icon>Ayuda</button>
+    <button md-menu-item><md-icon class="icon-20">input</md-icon>Salir</button>
+  </md-menu>
+
+
+  <md-sidenav-layout>
+    <md-sidenav align="end" mode="side" #sidenav>
+      <md-tab-group>
+        <md-tab>
+          <template md-tab-label>Details</template>
+          <template md-tab-content>
+            <p>Name: {{currentDog.name}}</p>
+            <p>Human: {{currentDog.human}}</p>
+            <p>Age: {{currentDog.age}}</p>
+            <button md-raised-button (click)="sidenav.close()" color="accent">CLOSE</button>
+          </template>
+        </md-tab>
+        <md-tab>
+          <template md-tab-label>Feed</template>
+          <template md-tab-content></template>
+        </md-tab>
+      </md-tab-group>
+    </md-sidenav>
+    <md-grid-list cols="4" rowHeight="200px">
+      <md-grid-tile *ngFor="let dog of dogs" [rowspan]="dog.rows">
+        <img src="assets/{{dog.name}}.png" alt="photo of {{dog.name}}">
+        <md-grid-tile-footer>
+          <h3 md-line>{{dog.name}}</h3>
+          <span md-line>Human: {{dog.human}}</span>
+          <button md-icon-button (click)="showDog(dog)">
+            <md-icon>info</md-icon>
+          </button>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-sidenav-layout>
+</div>
+
+
+<div class="example-container">
+  <h3>Normal Buttons</h3>
+  <div class="button-row">
+    <button md-button>Flat button</button>
+    <button md-raised-button  color="primary">Raised button</button>
+    <button md-fab><md-icon>check</md-icon></button>
+    <button md-mini-fab><md-icon>check</md-icon></button>
+  </div>
+
+  <h3>Link Buttons</h3>
+  <div class="example-button-row">
+    <a md-button routerLink=".">Flat button</a>
+    <a md-raised-button routerLink=".">Raised button</a>
+    <a md-fab routerLink="."><md-icon>check</md-icon></a>
+    <a md-mini-fab routerLink="."><md-icon>check</md-icon></a>
+  </div>
+</div>
+
+<form class="example-form">
+  <md-input-container class="example-full-width">
+    <input md-input placeholder="Company (disabled)" disabled value="Google">
+  </md-input-container>
+
+   <md-input-container class="example-full-width">
+    <input md-input placeholder="Company (disabled)" type="password" >
+  </md-input-container>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-input-container class="example-full-width">
+      <input md-input placeholder="First name">
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input md-input placeholder="Long Last Name That Will Be Truncated">
+    </md-input-container></td>
+  </tr></table>
+
+  <p>
+    <md-input-container class="example-full-width">
+      <textarea md-input placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+    </md-input-container>
+    <md-input-container class="example-full-width">
+      <textarea md-input placeholder="Address 2"></textarea>
+    </md-input-container>
+  </p>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-input-container class="example-full-width">
+      <input md-input placeholder="City">
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input md-input placeholder="State">
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input md-input #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+      <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+    </md-input-container></td>
+  </tr></table>
+</form>
+
+<md-grid-list cols="2">
+  <div class="button-row">
+    <button md-button>Flat button</button>
+    <button md-raised-button  color="primary">Raised button</button>
+    <button md-fab><md-icon>check</md-icon></button>
+    <button md-mini-fab><md-icon>check</md-icon></button>
+  </div>
+
+</md-grid-list>
+
+
+<md-grid-list cols="2">
+  <md-grid-tile>1</md-grid-tile>
+  <md-grid-tile>2</md-grid-tile>
+  <md-grid-tile>3</md-grid-tile>
+  <md-grid-tile>4</md-grid-tile>
+</md-grid-list>
+
+
+
+
+
+</md-sidenav-container>

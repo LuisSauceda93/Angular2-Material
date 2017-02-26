@@ -1,10 +1,10 @@
-import { MyProyectPage } from './app.po';
+import { LeashedInPage } from './app.po';
 
-describe('my-proyect App', function() {
-  let page: MyProyectPage;
+describe('leashed-in App', function() {
+  let page: LeashedInPage;
 
   beforeEach(() => {
-    page = new MyProyectPage();
+    page = new LeashedInPage();
   });
 
   it('should display message saying app works', () => {

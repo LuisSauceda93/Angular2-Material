@@ -1,0 +1,46 @@
+.example-form {
+  width: 500px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 0px 0px 20px 0px;
+}
+.boton-home{
+  background-color: none;
+}
+.color{
+  color: white;
+}
+.dark-theme md-toolbar.md-primary{
+   background: darkred;
+    color: rgba(255, 255, 255, 0.87);
+}
+.dark-theme [md-raised-button].md-primary, .dark-theme [md-fab].md-primary, .dark-theme [md-mini-fab].md-primary{
+  background-color: darkred;
+}
+.imagen-sidebar{
+  padding: 20px 0px 20px 0px;
+}
+.padding{
+  padding: 20px;
+  text-align: center;
+}
+.alinear-izquierda{
+  text-align: left;
+}
+.fondo-sidebar{
+  background-color: #00bcd4;
+}
